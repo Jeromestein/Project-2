@@ -97,6 +97,11 @@ class BlogApp {
             e.preventDefault();
             this.addComment();
         });
+
+        // Back to top button
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 
     async checkAuthStatus() {
@@ -176,9 +181,67 @@ class BlogApp {
     }
 
     async loadHomePage() {
-        await this.loadPosts();
+        this.loadSamplePosts();
         await this.loadCategories();
         await this.loadTags();
+    }
+
+    loadSamplePosts() {
+        const samplePosts = [
+            {
+                title: "How to Overcome Creative Blocks & Find Inspiration",
+                author: "Anna Maria Lopez",
+                date: "Mar 15, 2022",
+                readTime: "10 min read",
+                excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                image: "/images/placeholder-1.jpg"
+            },
+            {
+                title: "Unusual Uses for Everyday Household Items",
+                author: "Bob Jones",
+                date: "Feb 18, 2022",
+                readTime: "9 min read",
+                excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                image: "/images/placeholder-2.jpg"
+            },
+            {
+                title: "Spectacular Natural Wonders Everyone Should See",
+                author: "John Alvarez",
+                date: "Mar 18, 2022",
+                readTime: "16 min read",
+                excerpt: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+                image: "/images/placeholder-3.jpg"
+            }
+        ];
+
+        this.renderSamplePosts(samplePosts);
+    }
+
+    renderSamplePosts(posts) {
+        const container = document.getElementById('posts-container');
+        
+        container.innerHTML = `
+            <div class="row">
+                ${posts.map(post => `
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="article-card">
+                            <div class="article-image">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <div class="article-content">
+                                <h3 class="article-title">${post.title}</h3>
+                                <div class="article-meta">
+                                    <span class="article-author">${post.author}</span>
+                                    <span class="article-date">• ${post.date}</span>
+                                    <span class="article-read-time">• ${post.readTime}</span>
+                                </div>
+                                <p class="article-excerpt">${post.excerpt}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
     }
 
     async loadPosts() {

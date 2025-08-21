@@ -1,4 +1,4 @@
-/* Custom styles for Blog Platform */
+/* Custom styles for Modern Blog Platform */
 
 :root {
     --primary-color: #3b82f6;
@@ -10,28 +10,190 @@
     --dark-color: #1e293b;
     --border-color: #e2e8f0;
     --text-muted: #64748b;
+    --hero-bg: #374151;
+    --footer-bg: #f1f5f9;
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--dark-color);
-    background-color: #f8fafc;
+    background-color: #ffffff;
+    padding-top: 80px; /* Account for fixed navbar */
 }
 
 /* Navigation */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
 .navbar-brand {
     font-weight: 700;
     font-size: 1.5rem;
+    color: var(--dark-color) !important;
 }
 
 .navbar-nav .nav-link {
     font-weight: 500;
+    color: var(--dark-color) !important;
     transition: color 0.2s ease;
+    margin: 0 0.5rem;
 }
 
 .navbar-nav .nav-link:hover {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--primary-color) !important;
+}
+
+.social-icons a {
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+    font-size: 1.1rem;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: var(--hero-bg);
+    padding: 6rem 0;
+    margin-bottom: 4rem;
+}
+
+.hero-content {
+    color: white;
+}
+
+.hero-label {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--primary-color);
+    padding: 2rem;
+    display: inline-block;
+}
+
+.hero-description {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+.hero-btn {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Main Content */
+.main-content {
+    padding: 2rem 0 4rem 0;
+}
+
+.section-title {
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 0;
+}
+
+/* Article Cards Section */
+.articles-section {
+    padding: 4rem 0;
+}
+
+.article-card {
+    background: white;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.article-image {
+    width: 100%;
+    height: 200px;
+    background-color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 2rem;
+}
+
+.article-content {
+    padding: 1.5rem;
+}
+
+.article-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.article-author {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.article-date {
+    color: var(--text-muted);
+}
+
+.article-read-time {
+    color: var(--text-muted);
+}
+
+.article-excerpt {
+    color: var(--secondary-color);
+    line-height: 1.6;
+    margin-bottom: 0;
 }
 
 /* Cards */
@@ -217,6 +379,103 @@ body {
     border-bottom: none;
 }
 
+/* Footer */
+.footer {
+    background-color: var(--footer-bg);
+    padding: 4rem 0 2rem 0;
+    margin-top: 4rem;
+    position: relative;
+}
+
+.footer-title {
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+}
+
+.footer-description {
+    color: var(--secondary-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.footer-copyright {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 0.875rem;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background-color: white;
+    color: var(--secondary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--border-color);
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.social-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 0.875rem;
+}
+
+.social-link:hover {
+    color: var(--primary-color);
+}
+
+.footer-back-to-top {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.footer-back-to-top .btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+
+.footer-back-to-top .btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
 /* Dashboard Stats */
 .stats-card {
     text-align: center;
@@ -381,6 +640,19 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+        padding: 1.5rem;
+    }
+    
+    .hero-section {
+        padding: 4rem 0;
+    }
+    
     .post-title {
         font-size: 2rem;
     }
@@ -397,6 +669,12 @@ body {
     
     .navbar-brand {
         font-size: 1.25rem;
+    }
+    
+    .footer-back-to-top {
+        position: static;
+        text-align: center;
+        margin-top: 2rem;
     }
 }
 

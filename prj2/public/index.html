@@ -14,16 +14,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <i class="fas fa-blog me-2"></i>
-                Blog Platform
+            <a class="navbar-brand fw-bold" href="/">
+                @ Your Company
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -31,115 +32,115 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/" id="nav-home">
-                            <i class="fas fa-home me-1"></i>Home
-                        </a>
+                        <a class="nav-link fw-medium" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="nav-explore">
-                            <i class="fas fa-compass me-1"></i>Explore
-                        </a>
+                        <a class="nav-link fw-medium" href="#categories">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="#authors">Authors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="#shop">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="#contact">Contact</a>
                     </li>
                 </ul>
                 
-                <div class="navbar-nav" id="auth-buttons">
-                    <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
-                        <i class="fas fa-sign-in-alt me-1"></i>Login
-                    </button>
-                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#registerModal">
-                        <i class="fas fa-user-plus me-1"></i>Register
-                    </button>
-                </div>
-                
-                <div class="navbar-nav d-none" id="user-menu">
-                    <div class="dropdown">
-                        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-user me-1"></i>
-                            <span id="user-username">User</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" id="nav-dashboard">
-                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-                            </a></li>
-                            <li><a class="dropdown-item" href="#" id="nav-profile">
-                                <i class="fas fa-user-circle me-2"></i>Profile
-                            </a></li>
-                            <li><a class="dropdown-item" href="#" id="nav-new-post">
-                                <i class="fas fa-plus me-2"></i>New Post
-                            </a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#" id="nav-logout">
-                                <i class="fas fa-sign-out-alt me-2"></i>Logout
-                            </a></li>
-                        </ul>
+                <div class="navbar-nav">
+                    <div class="social-icons d-flex gap-3">
+                        <a href="#" class="text-muted"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="container my-4">
-        <!-- Home Page -->
-        <div id="home-page">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h2>Latest Posts</h2>
-                        <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-outline-primary active" data-sort="newest">Newest</button>
-                            <button type="button" class="btn btn-outline-primary" data-sort="popular">Popular</button>
-                        </div>
-                    </div>
-                    
-                    <div id="posts-container">
-                        <!-- Posts will be loaded here -->
-                    </div>
-                    
-                    <div class="d-flex justify-content-center mt-4">
-                        <nav aria-label="Posts pagination">
-                            <ul class="pagination" id="pagination">
-                                <!-- Pagination will be generated here -->
-                            </ul>
-                        </nav>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="hero-content">
+                        <span class="hero-label">DESIGN</span>
+                        <h1 class="hero-title">10 Tips for Designing a Professional Wireframe</h1>
+                        <p class="hero-description">
+                            Nunc mi tortor, venenatis fermentum ipsum id, gravida lacinia magna. Suspendisse maximus neque at elit consequat aliquet...
+                        </p>
+                        <button class="btn btn-primary btn-lg hero-btn">READ MORE</button>
                     </div>
                 </div>
-                
-                <div class="col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h5 class="mb-0">Search Posts</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="search-input" placeholder="Search posts...">
-                                <button class="btn btn-primary" type="button" id="search-btn">
-                                    <i class="fas fa-search"></i>
-                                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div id="home-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="section-title">Latest Posts</h2>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-primary active" data-sort="newest">Newest</button>
+                                <button type="button" class="btn btn-outline-primary" data-sort="popular">Popular</button>
                             </div>
+                        </div>
+                        
+                        <div id="posts-container">
+                            <!-- Posts will be loaded here -->
+                        </div>
+                        
+                        <div class="d-flex justify-content-center mt-4">
+                            <nav aria-label="Posts pagination">
+                                <ul class="pagination" id="pagination">
+                                    <!-- Pagination will be generated here -->
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                     
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h5 class="mb-0">Categories</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="categories-list">
-                                <!-- Categories will be loaded here -->
+                    <div class="col-lg-4">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">Search Posts</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="search-input" placeholder="Search posts...">
+                                    <button class="btn btn-primary" type="button" id="search-btn">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="mb-0">Popular Tags</h5>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">Categories</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="categories-list">
+                                    <!-- Categories will be loaded here -->
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div id="tags-list">
-                                <!-- Tags will be loaded here -->
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Popular Tags</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="tags-list">
+                                    <!-- Tags will be loaded here -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -149,57 +150,59 @@
 
         <!-- Dashboard Page -->
         <div id="dashboard-page" class="d-none">
-            <div class="row">
-                <div class="col-12">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h2>Dashboard</h2>
-                        <button class="btn btn-primary" id="create-post-btn">
-                            <i class="fas fa-plus me-1"></i>Create New Post
-                        </button>
-                    </div>
-                    
-                    <div class="row mb-4">
-                        <div class="col-md-3">
-                            <div class="card bg-primary text-white">
-                                <div class="card-body">
-                                    <h5 class="card-title">Total Posts</h5>
-                                    <h3 id="total-posts">0</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2>Dashboard</h2>
+                            <button class="btn btn-primary" id="create-post-btn">
+                                <i class="fas fa-plus me-1"></i>Create New Post
+                            </button>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Posts</h5>
+                                        <h3 id="total-posts">0</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-success text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Published</h5>
+                                        <h3 id="published-posts">0</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-warning text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Drafts</h5>
+                                        <h3 id="draft-posts">0</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-info text-white">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Views</h5>
+                                        <h3 id="total-views">0</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="card bg-success text-white">
-                                <div class="card-body">
-                                    <h5 class="card-title">Published</h5>
-                                    <h3 id="published-posts">0</h3>
-                                </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">My Posts</h5>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card bg-warning text-white">
-                                <div class="card-body">
-                                    <h5 class="card-title">Drafts</h5>
-                                    <h3 id="draft-posts">0</h3>
+                            <div class="card-body">
+                                <div id="user-posts-container">
+                                    <!-- User posts will be loaded here -->
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card bg-info text-white">
-                                <div class="card-body">
-                                    <h5 class="card-title">Total Views</h5>
-                                    <h3 id="total-views">0</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="mb-0">My Posts</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="user-posts-container">
-                                <!-- User posts will be loaded here -->
                             </div>
                         </div>
                     </div>
@@ -209,50 +212,52 @@
 
         <!-- Profile Page -->
         <div id="profile-page" class="d-none">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="mb-3">
-                                <img src="/images/default-avatar.png" alt="Avatar" class="rounded-circle" width="100" height="100" id="profile-avatar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <img src="/images/default-avatar.png" alt="Avatar" class="rounded-circle" width="100" height="100" id="profile-avatar">
+                                </div>
+                                <h4 id="profile-name">User Name</h4>
+                                <p class="text-muted" id="profile-username">@username</p>
+                                <p id="profile-bio">No bio available</p>
+                                <button class="btn btn-primary" id="edit-profile-btn">
+                                    <i class="fas fa-edit me-1"></i>Edit Profile
+                                </button>
                             </div>
-                            <h4 id="profile-name">User Name</h4>
-                            <p class="text-muted" id="profile-username">@username</p>
-                            <p id="profile-bio">No bio available</p>
-                            <button class="btn btn-primary" id="edit-profile-btn">
-                                <i class="fas fa-edit me-1"></i>Edit Profile
-                            </button>
                         </div>
                     </div>
-                </div>
-                
-                <div class="col-lg-8">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="mb-0">Profile Information</h5>
-                        </div>
-                        <div class="card-body">
-                            <form id="profile-form">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="profile-first-name" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="profile-first-name" required>
+                    
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Profile Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="profile-form">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="profile-first-name" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="profile-first-name" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="profile-last-name" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="profile-last-name" required>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="profile-last-name" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" id="profile-last-name" required>
+                                    <div class="mb-3">
+                                        <label for="profile-bio-input" class="form-label">Bio</label>
+                                        <textarea class="form-control" id="profile-bio-input" rows="3" maxlength="500"></textarea>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="profile-bio-input" class="form-label">Bio</label>
-                                    <textarea class="form-control" id="profile-bio-input" rows="3" maxlength="500"></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="profile-avatar-url" class="form-label">Avatar URL</label>
-                                    <input type="url" class="form-control" id="profile-avatar-url">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                            </form>
+                                    <div class="mb-3">
+                                        <label for="profile-avatar-url" class="form-label">Avatar URL</label>
+                                        <input type="url" class="form-control" id="profile-avatar-url">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -261,41 +266,43 @@
 
         <!-- Post Detail Page -->
         <div id="post-detail-page" class="d-none">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div id="post-content">
-                        <!-- Post content will be loaded here -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div id="post-content">
+                            <!-- Post content will be loaded here -->
+                        </div>
+                        
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="mb-0">Comments</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="comments-container">
+                                    <!-- Comments will be loaded here -->
+                                </div>
+                                
+                                <div class="mt-3" id="comment-form-container">
+                                    <form id="comment-form">
+                                        <div class="mb-3">
+                                            <textarea class="form-control" id="comment-content" rows="3" placeholder="Write a comment..." required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Post Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="card mt-4">
-                        <div class="card-header">
-                            <h5 class="mb-0">Comments</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="comments-container">
-                                <!-- Comments will be loaded here -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Post Info</h5>
                             </div>
-                            
-                            <div class="mt-3" id="comment-form-container">
-                                <form id="comment-form">
-                                    <div class="mb-3">
-                                        <textarea class="form-control" id="comment-content" rows="3" placeholder="Write a comment..." required></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Post Comment</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="mb-0">Post Info</h5>
-                        </div>
-                        <div class="card-body">
-                            <div id="post-info">
-                                <!-- Post info will be loaded here -->
+                            <div class="card-body">
+                                <div id="post-info">
+                                    <!-- Post info will be loaded here -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -303,6 +310,66 @@
             </div>
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">@ Your Company</h5>
+                    <p class="footer-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <p class="footer-copyright">© 2022 Your Company. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#" class="text-muted me-3">Terms of Service</a>
+                        <a href="#" class="text-muted">Privacy Policy</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Tags</h5>
+                    <div class="footer-tags">
+                        <span class="tag">HEALTH</span>
+                        <span class="tag">LIFESTYLE</span>
+                        <span class="tag">SOCIAL</span>
+                        <span class="tag">ENTERTAINMENT</span>
+                        <span class="tag">NEWS</span>
+                        <span class="tag">BOOKS</span>
+                        <span class="tag">DESIGN</span>
+                        <span class="tag">GADGETS</span>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">Social</h5>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter me-2"></i>Twitter</a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook me-2"></i>Facebook</a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram me-2"></i>Instagram</a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube me-2"></i>Youtube</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">About</h5>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Shop</a>
+                        <a href="#" class="footer-link">Authors</a>
+                        <a href="#" class="footer-link">Sitemap</a>
+                        <a href="#" class="footer-link">About us</a>
+                        <a href="#" class="footer-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-back-to-top">
+            <button class="btn btn-sm btn-outline-secondary rounded-circle" id="back-to-top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
 
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1">
