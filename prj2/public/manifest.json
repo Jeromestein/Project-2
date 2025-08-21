@@ -1,0 +1,27 @@
+{
+  "name": "Modern Blog Platform",
+  "short_name": "Blog Platform",
+  "description": "A modern blog platform with authentication and PWA features",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["productivity", "social", "education"],
+  "lang": "en",
+  "dir": "ltr"
+}

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blog Platform</title>
+    <meta name="description" content="A modern blog platform with authentication and PWA features">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-blog me-2"></i>
+                Blog Platform
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" id="nav-home">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="nav-explore">
+                            <i class="fas fa-compass me-1"></i>Explore
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="navbar-nav" id="auth-buttons">
+                    <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="fas fa-sign-in-alt me-1"></i>Login
+                    </button>
+                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#registerModal">
+                        <i class="fas fa-user-plus me-1"></i>Register
+                    </button>
+                </div>
+                
+                <div class="navbar-nav d-none" id="user-menu">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i>
+                            <span id="user-username">User</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="nav-dashboard">
+                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            </a></li>
+                            <li><a class="dropdown-item" href="#" id="nav-profile">
+                                <i class="fas fa-user-circle me-2"></i>Profile
+                            </a></li>
+                            <li><a class="dropdown-item" href="#" id="nav-new-post">
+                                <i class="fas fa-plus me-2"></i>New Post
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="nav-logout">
+                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <!-- Home Page -->
+        <div id="home-page">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Latest Posts</h2>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-primary active" data-sort="newest">Newest</button>
+                            <button type="button" class="btn btn-outline-primary" data-sort="popular">Popular</button>
+                        </div>
+                    </div>
+                    
+                    <div id="posts-container">
+                        <!-- Posts will be loaded here -->
+                    </div>
+                    
+                    <div class="d-flex justify-content-center mt-4">
+                        <nav aria-label="Posts pagination">
+                            <ul class="pagination" id="pagination">
+                                <!-- Pagination will be generated here -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Search Posts</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="search-input" placeholder="Search posts...">
+                                <button class="btn btn-primary" type="button" id="search-btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Categories</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="categories-list">
+                                <!-- Categories will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Popular Tags</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="tags-list">
+                                <!-- Tags will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="d-none">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Dashboard</h2>
+                        <button class="btn btn-primary" id="create-post-btn">
+                            <i class="fas fa-plus me-1"></i>Create New Post
+                        </button>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Posts</h5>
+                                    <h3 id="total-posts">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-success text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Published</h5>
+                                    <h3 id="published-posts">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-warning text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Drafts</h5>
+                                    <h3 id="draft-posts">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-info text-white">
+                                <div class="card-body">
+                                    <h5 class="card-title">Total Views</h5>
+                                    <h3 id="total-views">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">My Posts</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="user-posts-container">
+                                <!-- User posts will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="d-none">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <img src="/images/default-avatar.png" alt="Avatar" class="rounded-circle" width="100" height="100" id="profile-avatar">
+                            </div>
+                            <h4 id="profile-name">User Name</h4>
+                            <p class="text-muted" id="profile-username">@username</p>
+                            <p id="profile-bio">No bio available</p>
+                            <button class="btn btn-primary" id="edit-profile-btn">
+                                <i class="fas fa-edit me-1"></i>Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Profile Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="profile-form">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="profile-first-name" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="profile-first-name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="profile-last-name" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="profile-last-name" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="profile-bio-input" class="form-label">Bio</label>
+                                    <textarea class="form-control" id="profile-bio-input" rows="3" maxlength="500"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="profile-avatar-url" class="form-label">Avatar URL</label>
+                                    <input type="url" class="form-control" id="profile-avatar-url">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post Detail Page -->
+        <div id="post-detail-page" class="d-none">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div id="post-content">
+                        <!-- Post content will be loaded here -->
+                    </div>
+                    
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Comments</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="comments-container">
+                                <!-- Comments will be loaded here -->
+                            </div>
+                            
+                            <div class="mt-3" id="comment-form-container">
+                                <form id="comment-form">
+                                    <div class="mb-3">
+                                        <textarea class="form-control" id="comment-content" rows="3" placeholder="Write a comment..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Post Info</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="post-info">
+                                <!-- Post info will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="register-first-name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="register-first-name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="register-last-name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="register-last-name" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="register-username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="register-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="register-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="register-bio" class="form-label">Bio (Optional)</label>
+                            <textarea class="form-control" id="register-bio" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create/Edit Post Modal -->
+    <div class="modal fade" id="postModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="post-modal-title">Create New Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="post-form">
+                        <div class="mb-3">
+                            <label for="post-title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="post-title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="post-content" class="form-label">Content</label>
+                            <textarea class="form-control" id="post-content" rows="10" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="post-excerpt" class="form-label">Excerpt (Optional)</label>
+                            <textarea class="form-control" id="post-excerpt" rows="3"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="post-category" class="form-label">Category</label>
+                                <input type="text" class="form-control" id="post-category" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="post-status" class="form-label">Status</label>
+                                <select class="form-select" id="post-status">
+                                    <option value="draft">Draft</option>
+                                    <option value="published">Published</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="post-tags" class="form-label">Tags (comma separated)</label>
+                            <input type="text" class="form-control" id="post-tags" placeholder="technology, web development, javascript">
+                        </div>
+                        <div class="mb-3">
+                            <label for="post-featured-image" class="form-label">Featured Image URL (Optional)</label>
+                            <input type="url" class="form-control" id="post-featured-image">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/js/app.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/posts.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>
