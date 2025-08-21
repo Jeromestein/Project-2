@@ -16,10 +16,12 @@ class BlogApp {
     }
 
     init() {
+        console.log('Initializing BlogApp...');
         this.setupEventListeners();
         this.checkAuthStatus();
         this.loadHomePage();
         this.setupPWA();
+        console.log('BlogApp initialized successfully');
     }
 
     setupEventListeners() {
@@ -181,9 +183,11 @@ class BlogApp {
     }
 
     async loadHomePage() {
+        console.log('Loading home page...');
+        // Force immediate execution
         this.loadSamplePosts();
-        await this.loadCategories();
-        await this.loadTags();
+        this.loadSampleCategories();
+        this.loadSampleTags();
     }
 
     loadSamplePosts() {
@@ -214,11 +218,19 @@ class BlogApp {
             }
         ];
 
+        // Set the posts to the instance variable so renderPosts works correctly
+        this.posts = samplePosts;
         this.renderSamplePosts(samplePosts);
     }
 
     renderSamplePosts(posts) {
         const container = document.getElementById('posts-container');
+        console.log('Rendering sample posts...', container);
+        
+        if (!container) {
+            console.error('Posts container not found!');
+            return;
+        }
         
         container.innerHTML = `
             <div class="row">
@@ -242,6 +254,52 @@ class BlogApp {
                 `).join('')}
             </div>
         `;
+    }
+
+    loadSampleCategories() {
+        const categories = [
+            'Technology',
+            'Design',
+            'Business',
+            'Lifestyle',
+            'Travel',
+            'Food',
+            'Health',
+            'Education'
+        ];
+
+        const container = document.getElementById('categories-list');
+        if (container) {
+            container.innerHTML = categories.map(category => `
+                <a href="#" class="category-item d-block py-2 text-decoration-none">
+                    <i class="fas fa-folder me-2"></i>${category}
+                </a>
+            `).join('');
+        }
+    }
+
+    loadSampleTags() {
+        const tags = [
+            'JavaScript',
+            'React',
+            'Node.js',
+            'CSS',
+            'HTML',
+            'Design',
+            'UX',
+            'UI',
+            'Web Development',
+            'Programming'
+        ];
+
+        const container = document.getElementById('tags-list');
+        if (container) {
+            container.innerHTML = tags.map(tag => `
+                <a href="#" class="tag-item d-block py-2 text-decoration-none">
+                    <i class="fas fa-tag me-2"></i>${tag}
+                </a>
+            `).join('');
+        }
     }
 
     async loadPosts() {
@@ -508,8 +566,9 @@ class BlogApp {
     }
 }
 
-// Initialize the app
-const app = new BlogApp();
-
-// Make app globally available for event handlers
-window.app = app;
+// Initialize the app when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing app...');
+    const app = new BlogApp();
+    window.app = app;
+});
