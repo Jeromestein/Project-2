@@ -41,6 +41,30 @@ class BlogApp {
             this.showPage('profile');
         });
 
+        document.getElementById('nav-contact').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showPage('contact');
+        });
+
+        // Breadcrumb navigation
+        document.getElementById('breadcrumb-home').addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showPage('home');
+        });
+
+        // Contact page buttons
+        document.getElementById('faq-btn').addEventListener('click', () => {
+            this.showAlert('FAQ page is coming soon!', 'info');
+        });
+
+        document.getElementById('pr-btn').addEventListener('click', () => {
+            this.showAlert('PR contact form will be available soon!', 'info');
+        });
+
+        document.getElementById('sales-btn').addEventListener('click', () => {
+            this.showAlert('Sales contact form will be available soon!', 'info');
+        });
+
         document.getElementById('nav-new-post').addEventListener('click', (e) => {
             e.preventDefault();
             this.showCreatePostModal();
@@ -98,6 +122,12 @@ class BlogApp {
         document.getElementById('comment-form').addEventListener('submit', (e) => {
             e.preventDefault();
             this.addComment();
+        });
+
+        // Contact form
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleContactForm();
         });
 
         // Back to top button
@@ -178,6 +208,9 @@ class BlogApp {
                 break;
             case 'profile':
                 this.loadProfile();
+                break;
+            case 'contact':
+                this.loadContactPage();
                 break;
         }
     }
@@ -563,6 +596,43 @@ class BlogApp {
         if (this.currentPage === 'dashboard' || this.currentPage === 'profile') {
             this.showPage('home');
         }
+    }
+
+    loadContactPage() {
+        console.log('Loading contact page...');
+        // Contact page is static, no additional loading needed
+    }
+
+    handleContactForm() {
+        const formData = {
+            fullName: document.getElementById('contact-full-name').value,
+            email: document.getElementById('contact-email').value,
+            phone: document.getElementById('contact-phone').value,
+            message: document.getElementById('contact-message').value,
+            notRobot: document.getElementById('contact-not-robot').checked
+        };
+
+        // Basic validation
+        if (!formData.fullName || !formData.email || !formData.message || !formData.notRobot) {
+            this.showAlert('Please fill in all required fields and confirm you are not a robot.', 'warning');
+            return;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            this.showAlert('Please enter a valid email address.', 'warning');
+            return;
+        }
+
+        // Simulate form submission
+        this.showAlert('Thank you for your message! We will get back to you soon.', 'success');
+        
+        // Clear form
+        document.getElementById('contact-form').reset();
+        
+        // In a real application, you would send this data to your server
+        console.log('Contact form submitted:', formData);
     }
 }
 

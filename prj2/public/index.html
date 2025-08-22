@@ -46,7 +46,7 @@
                         <a class="nav-link fw-medium" href="#shop">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-medium" href="#contact">Contact</a>
+                        <a class="nav-link fw-medium" href="#" id="nav-contact">Contact</a>
                     </li>
                 </ul>
                 
@@ -100,7 +100,7 @@
                                 <div class="col-lg-4 col-md-6 mb-4">
                                     <div class="article-card">
                                         <div class="article-image">
-                                            <i class="fas fa-mountain"></i>
+                                            <img src="https://picsum.photos/400/300?random=1" alt="Creative Inspiration" class="w-100 h-100 object-fit-cover">
                                         </div>
                                         <div class="article-content">
                                             <h3 class="article-title">How to Overcome Creative Blocks & Find Inspiration</h3>
@@ -116,7 +116,7 @@
                                 <div class="col-lg-4 col-md-6 mb-4">
                                     <div class="article-card">
                                         <div class="article-image">
-                                            <i class="fas fa-mountain"></i>
+                                            <img src="https://picsum.photos/400/300?random=2" alt="Household Items" class="w-100 h-100 object-fit-cover">
                                         </div>
                                         <div class="article-content">
                                             <h3 class="article-title">Unusual Uses for Everyday Household Items</h3>
@@ -132,7 +132,7 @@
                                 <div class="col-lg-4 col-md-6 mb-4">
                                     <div class="article-card">
                                         <div class="article-image">
-                                            <i class="fas fa-mountain"></i>
+                                            <img src="https://picsum.photos/400/300?random=3" alt="Natural Wonders" class="w-100 h-100 object-fit-cover">
                                         </div>
                                         <div class="article-content">
                                             <h3 class="article-title">Spectacular Natural Wonders Everyone Should See</h3>
@@ -298,7 +298,7 @@
                         <div class="card">
                             <div class="card-body text-center">
                                 <div class="mb-3">
-                                    <img src="/images/default-avatar.png" alt="Avatar" class="rounded-circle" width="100" height="100" id="profile-avatar">
+                                    <img src="https://picsum.photos/100/100?random=avatar" alt="Avatar" class="rounded-circle" width="100" height="100" id="profile-avatar">
                                 </div>
                                 <h4 id="profile-name">User Name</h4>
                                 <p class="text-muted" id="profile-username">@username</p>
@@ -382,6 +382,167 @@
                             <div class="card-body">
                                 <div id="post-info">
                                     <!-- Post info will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="d-none">
+            <div class="container">
+                <!-- Breadcrumbs -->
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" class="text-decoration-none" id="breadcrumb-home">Main Page</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                    </ol>
+                </nav>
+
+                <!-- Page Title -->
+                <div class="text-center mb-5">
+                    <h1 class="display-4 fw-bold">Contact</h1>
+                </div>
+
+                <!-- Contact Options Section -->
+                <div class="row mb-5">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 contact-option-card">
+                            <div class="card-body text-center">
+                                <div class="contact-icon mb-3">
+                                    <i class="fas fa-question-circle fa-3x text-primary"></i>
+                                </div>
+                                <h5 class="card-title">Questions?</h5>
+                                <p class="card-text text-muted">
+                                    Have questions about our platform or need help with your account? 
+                                    Our FAQ section has answers to the most common questions.
+                                </p>
+                                <button class="btn btn-outline-primary" id="faq-btn">Visit FAQ</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 contact-option-card">
+                            <div class="card-body text-center">
+                                <div class="contact-icon mb-3">
+                                    <i class="fas fa-newspaper fa-3x text-primary"></i>
+                                </div>
+                                <h5 class="card-title">Media inquiries</h5>
+                                <p class="card-text text-muted">
+                                    Are you a journalist or media representative? 
+                                    Contact our PR team for press releases and media opportunities.
+                                </p>
+                                <button class="btn btn-outline-primary" id="pr-btn">Contact PR</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100 contact-option-card">
+                            <div class="card-body text-center">
+                                <div class="contact-icon mb-3">
+                                    <i class="fas fa-handshake fa-3x text-primary"></i>
+                                </div>
+                                <h5 class="card-title">Partnership inquiries</h5>
+                                <p class="card-text text-muted">
+                                    Interested in partnering with us? 
+                                    Our sales team is ready to discuss collaboration opportunities.
+                                </p>
+                                <button class="btn btn-outline-primary" id="sales-btn">Contact Sales</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Send us a message Section -->
+                <div class="row">
+                    <div class="col-lg-8 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="mb-0">Send us a message</h4>
+                            </div>
+                            <div class="card-body">
+                                <form id="contact-form">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="contact-full-name" class="form-label">Full Name</label>
+                                            <input type="text" class="form-control" id="contact-full-name" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="contact-email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="contact-email" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="contact-phone" class="form-label">Phone number (optional)</label>
+                                        <input type="tel" class="form-control" id="contact-phone">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="contact-message" class="form-label">Type your message here</label>
+                                        <textarea class="form-control" id="contact-message" rows="6" required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="contact-not-robot" required>
+                                            <label class="form-check-label" for="contact-not-robot">
+                                                I'm not a robot
+                                            </label>
+                                        </div>
+                                        <div class="mt-2">
+                                            <small class="text-muted">
+                                                <i class="fas fa-shield-alt me-1"></i>
+                                                reCAPTCHA Privacy - Terms
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg">SEND</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="contact-info">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Editorial Office</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="contact-info-item mb-3">
+                                        <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                        <span>1000 East Parkway, San Francisco, CA 93021</span>
+                                    </div>
+                                    <div class="contact-info-item mb-3">
+                                        <i class="fas fa-clock text-primary me-2"></i>
+                                        <span>Monday - Friday, 9:00 AM-5PM CST</span>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <i class="fas fa-phone text-primary me-2"></i>
+                                        <span>1-273-329-1223</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Shop Customer Service</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="contact-info-item mb-3">
+                                        <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                                        <span>10 Oak Tree Avenue, Austin, TX 13021</span>
+                                    </div>
+                                    <div class="contact-info-item mb-3">
+                                        <i class="fas fa-clock text-primary me-2"></i>
+                                        <span>Monday - Friday, 9:00 AM-5PM CST</span>
+                                    </div>
+                                    <div class="contact-info-item">
+                                        <i class="fas fa-phone text-primary me-2"></i>
+                                        <span>1-273-329-1223</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
