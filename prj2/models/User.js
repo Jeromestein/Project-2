@@ -44,6 +44,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
+    newsletter: {
+        type: Boolean,
+        default: false
+    },
     role: {
         type: String,
         enum: ['user', 'admin'],
@@ -85,5 +89,14 @@ userSchema.methods.getProfile = function() {
     delete userObject.password;
     return userObject;
 };
+
+// Virtual for full name
+userSchema.virtual('fullName').get(function() {
+    return `${this.firstName} ${this.lastName}`.trim();
+});
+
+// Ensure virtual fields are serialized
+userSchema.set('toJSON', { virtuals: true });
+userSchema.set('toObject', { virtuals: true });
 
 module.exports = mongoose.model('User', userSchema);

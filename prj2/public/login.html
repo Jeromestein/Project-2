@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - TechBlog Hub</title>
+    <meta name="description" content="Sign in to your TechBlog Hub account">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/css/style.css?v=1.1" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        
+        .auth-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        .auth-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .auth-header h1 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .auth-content {
+            padding: 3rem;
+        }
+        
+        .form-floating {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-floating .form-control {
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            padding: 1rem 1rem 1rem 3rem;
+            font-size: 1rem;
+        }
+        
+        .form-floating .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            z-index: 4;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+            z-index: 4;
+        }
+        
+        .btn-auth {
+            background: #495057;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-auth:hover {
+            background: #343a40;
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        
+        .form-check-input:checked {
+            background-color: #667eea;
+            border-color: #667eea;
+        }
+        
+        .form-check-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .auth-links {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .auth-links a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 1.5rem;
+        }
+        
+        .forgot-password a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password a:hover {
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .auth-content {
+                padding: 2rem;
+            }
+            
+            .auth-header {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Sign up/Log in</h1>
+                <p class="mb-0">Welcome back to TechBlog Hub</p>
+            </div>
+            
+            <div class="auth-content">
+                <div class="row">
+                    <!-- Sign In Form -->
+                    <div class="col-md-6">
+                        <h2 class="h4 fw-bold mb-3">Sign in</h2>
+                        <p class="text-muted mb-4">Log in by entering your email address and password.</p>
+                        
+                        <form id="loginForm">
+                            <div class="form-floating">
+                                
+                                <input type="email" class="form-control" id="loginEmail" placeholder="email@address.com" required>
+                                <label for="loginEmail">Email address</label>
+                            </div>
+                            
+                            <div class="form-floating">
+                                
+                                <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                                <label for="loginPassword">Password</label>
+                                <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="forgot-password">
+                                <a href="#" onclick="forgotPassword()">Forgot password?</a>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-auth btn-dark">
+                                Log in
+                            </button>
+                            
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">
+                                    Remember me
+                                </label>
+                            </div>
+                        </form>
+                        
+                        <div class="auth-links">
+                            <p class="mb-0">Don't have an account? <a href="/register.html">Sign up here</a></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Create Account Form -->
+                    <div class="col-md-6">
+                        <h2 class="h4 fw-bold mb-3">Create Your Account</h2>
+                        
+                        <form id="registerForm">
+                            <div class="form-floating">
+                                
+                                <input type="email" class="form-control" id="registerEmail" placeholder="email@address.com" required>
+                                <label for="registerEmail">Email address</label>
+                            </div>
+                            
+                            <div class="form-floating">
+                                
+                                <input type="password" class="form-control" id="registerPassword" placeholder="Password" required>
+                                <label for="registerPassword">Password</label>
+                                <button type="button" class="password-toggle" onclick="togglePassword('registerPassword')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="newsletter">
+                                <label class="form-check-label" for="newsletter">
+                                    Receive news, updates and deals
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-auth btn-dark">
+                                Create Account
+                            </button>
+                            
+                            <p class="text-muted small mt-3">
+                                By creating an account, you are agree to the 
+                                <a href="#" class="text-decoration-none">Terms of Service</a> and 
+                                <a href="#" class="text-decoration-none">Privacy Policy</a>.
+                            </p>
+                        </form>
+                        
+                        <div class="auth-links">
+                            <p class="mb-0">Already have an account? <a href="/login.html">Log in here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/js/components.js"></script>
+    <script src="/js/auth.js"></script>
+    
+    <script>
+        // Password toggle functionality
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+        
+        // Forgot password functionality
+        function forgotPassword() {
+            const email = prompt('Please enter your email address:');
+            if (email) {
+                // TODO: Implement forgot password functionality
+                alert('Password reset link has been sent to your email.');
+            }
+        }
+        
+        // Form submission handlers
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            // TODO: Implement login functionality
+            console.log('Login attempt:', { email, password, rememberMe });
+            alert('Login functionality will be implemented with backend integration.');
+        });
+        
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const newsletter = document.getElementById('newsletter').checked;
+            
+            // TODO: Implement registration functionality
+            console.log('Registration attempt:', { email, password, newsletter });
+            alert('Registration functionality will be implemented with backend integration.');
+        });
+    </script>
+</body>
+</html>
