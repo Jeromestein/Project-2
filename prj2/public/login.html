@@ -184,8 +184,8 @@
                         <form id="loginForm">
                             <div class="form-floating">
                                 
-                                <input type="email" class="form-control" id="loginEmail" placeholder="email@address.com" required>
-                                <label for="loginEmail">Email address</label>
+                                <input type="text" class="form-control" id="loginEmail" placeholder="Username or email" required>
+                                <label for="loginEmail">Username or email</label>
                             </div>
                             
                             <div class="form-floating">
@@ -277,6 +277,28 @@
     <script src="/js/auth.js"></script>
     
     <script>
+        // Initialize with hard-coded user account
+        function initializeDefaultUser() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const defaultUserExists = users.find(user => user.email === 'jiayiwang');
+            
+            if (!defaultUserExists) {
+                const defaultUser = {
+                    fullName: 'Jiayi Wang',
+                    email: 'jiayiwang',
+                    password: 'web2025',
+                    newsletter: false,
+                    registeredAt: new Date().toISOString()
+                };
+                users.push(defaultUser);
+                localStorage.setItem('users', JSON.stringify(users));
+                console.log('Default user account created: jiayiwang / web2025');
+            }
+        }
+        
+        // Initialize on page load
+        initializeDefaultUser();
+        
         // Password toggle functionality
         function togglePassword(inputId) {
             const input = document.getElementById(inputId);
@@ -309,9 +331,31 @@
             const password = document.getElementById('loginPassword').value;
             const rememberMe = document.getElementById('rememberMe').checked;
             
-            // TODO: Implement login functionality
-            console.log('Login attempt:', { email, password, rememberMe });
-            alert('Login functionality will be implemented with backend integration.');
+            // Hard-coded login logic
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Store login session
+                const sessionData = {
+                    userId: user.email,
+                    fullName: user.fullName,
+                    email: user.email,
+                    loggedInAt: new Date().toISOString(),
+                    rememberMe: rememberMe
+                };
+                
+                localStorage.setItem('currentUser', JSON.stringify(sessionData));
+                
+                if (rememberMe) {
+                    localStorage.setItem('rememberedUser', JSON.stringify(sessionData));
+                }
+                
+                alert('Login successful! Welcome back, ' + user.fullName);
+                window.location.href = '/';
+            } else {
+                alert('Invalid email or password. Please try again.');
+            }
         });
         
         document.getElementById('registerForm').addEventListener('submit', function(e) {
@@ -320,9 +364,31 @@
             const password = document.getElementById('registerPassword').value;
             const newsletter = document.getElementById('newsletter').checked;
             
-            // TODO: Implement registration functionality
-            console.log('Registration attempt:', { email, password, newsletter });
-            alert('Registration functionality will be implemented with backend integration.');
+            // Hard-coded registration logic for the side form
+            const userData = {
+                fullName: email.split('@')[0], // Use email prefix as name
+                email: email,
+                password: password,
+                newsletter: newsletter,
+                registeredAt: new Date().toISOString()
+            };
+            
+            // Check if user already exists
+            const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+            const userExists = existingUsers.find(user => user.email === email);
+            
+            if (userExists) {
+                alert('User with this email already exists!');
+                return;
+            }
+            
+            // Add new user
+            existingUsers.push(userData);
+            localStorage.setItem('users', JSON.stringify(existingUsers));
+            
+            alert('Registration successful! You can now log in.');
+            // Clear the form
+            document.getElementById('registerForm').reset();
         });
     </script>
 </body>
