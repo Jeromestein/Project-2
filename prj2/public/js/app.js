@@ -309,6 +309,7 @@ class BlogApp {
     renderSamplePosts(posts) {
         const container = document.getElementById('posts-container');
         console.log('Rendering sample posts...', container);
+        console.log('Posts data:', posts);
         
         if (!container) {
             console.error('Posts container not found!');
@@ -321,7 +322,7 @@ class BlogApp {
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="article-card">
                             <div class="article-image">
-                                <i class="fas fa-mountain"></i>
+                                <img src="${post.image}" alt="${post.title}" class="w-100 h-100 object-fit-cover">
                             </div>
                             <div class="article-content">
                                 <h3 class="article-title">${post.title}</h3>
