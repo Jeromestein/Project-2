@@ -20,49 +20,11 @@
     <link href="/css/style.css?v=1.1" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/">
-                @ Your Company
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link fw-medium" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-medium" href="#categories">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-medium" href="#authors">Authors</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-medium" href="#shop">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-medium" href="/contact.html">Contact</a>
-                    </li>
-                </ul>
-                
-                <div class="navbar-nav">
-                    <div class="social-icons d-flex gap-3">
-                        <a href="#" class="text-muted"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-muted"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-muted"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Header Container -->
+    <div id="header-container"></div>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" style="background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -472,65 +434,8 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="footer-title">@ Your Company</h5>
-                    <p class="footer-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </p>
-                    <p class="footer-copyright">© 2022 Your Company. All rights reserved.</p>
-                    <div class="footer-links">
-                        <a href="#" class="text-muted me-3">Terms of Service</a>
-                        <a href="#" class="text-muted">Privacy Policy</a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="footer-title">Tags</h5>
-                    <div class="footer-tags">
-                        <span class="tag">HEALTH</span>
-                        <span class="tag">LIFESTYLE</span>
-                        <span class="tag">SOCIAL</span>
-                        <span class="tag">ENTERTAINMENT</span>
-                        <span class="tag">NEWS</span>
-                        <span class="tag">BOOKS</span>
-                        <span class="tag">DESIGN</span>
-                        <span class="tag">GADGETS</span>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="footer-title">Social</h5>
-                    <div class="footer-social">
-                        <a href="#" class="social-link"><i class="fab fa-twitter me-2"></i>Twitter</a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook me-2"></i>Facebook</a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram me-2"></i>Instagram</a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube me-2"></i>Youtube</a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h5 class="footer-title">About</h5>
-                    <div class="footer-links">
-                        <a href="#" class="footer-link">Shop</a>
-                        <a href="#" class="footer-link">Authors</a>
-                        <a href="#" class="footer-link">Sitemap</a>
-                        <a href="#" class="footer-link">About us</a>
-                        <a href="/contact.html" class="footer-link">Contact</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-back-to-top">
-            <button class="btn btn-sm btn-outline-secondary rounded-circle" id="back-to-top">
-                <i class="fas fa-arrow-up"></i>
-            </button>
-        </div>
-    </footer>
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
 
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1">
@@ -653,6 +558,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
+    <script src="/js/components.js"></script>
     <script src="/js/app.js?v=1.2"></script>
     <script src="/js/auth.js?v=1.2"></script>
     <script src="/js/posts.js?v=1.2"></script>
