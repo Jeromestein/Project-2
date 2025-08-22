@@ -25,66 +25,86 @@ class BlogApp {
     }
 
     setupEventListeners() {
-        // Navigation
-        document.getElementById('nav-home').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.showPage('home');
-        });
+        // Navigation - with null checks
+        const navHome = document.getElementById('nav-home');
+        if (navHome) {
+            navHome.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showPage('home');
+            });
+        }
 
-        document.getElementById('nav-dashboard').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.showPage('dashboard');
-        });
+        const navDashboard = document.getElementById('nav-dashboard');
+        if (navDashboard) {
+            navDashboard.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showPage('dashboard');
+            });
+        }
 
-        document.getElementById('nav-profile').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.showPage('profile');
-        });
+        const navProfile = document.getElementById('nav-profile');
+        if (navProfile) {
+            navProfile.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showPage('profile');
+            });
+        }
 
-        document.getElementById('nav-contact').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.showPage('contact');
-        });
+        const navContact = document.getElementById('nav-contact');
+        if (navContact) {
+            console.log('Contact link found:', navContact);
+            navContact.addEventListener('click', (e) => {
+                console.log('Contact nav link clicked');
+                e.preventDefault();
+                this.showPage('contact');
+            });
+        } else {
+            console.error('Contact link not found!');
+        }
 
         // Breadcrumb navigation
-        document.getElementById('breadcrumb-home').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.showPage('home');
-        });
+        const breadcrumbHome = document.getElementById('breadcrumb-home');
+        if (breadcrumbHome) {
+            breadcrumbHome.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showPage('home');
+            });
+        }
 
-        // Contact page buttons
-        document.getElementById('faq-btn').addEventListener('click', () => {
-            this.showAlert('FAQ page is coming soon!', 'info');
-        });
+        // Contact page buttons will be set up when contact page is loaded
 
-        document.getElementById('pr-btn').addEventListener('click', () => {
-            this.showAlert('PR contact form will be available soon!', 'info');
-        });
+        const navNewPost = document.getElementById('nav-new-post');
+        if (navNewPost) {
+            navNewPost.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showCreatePostModal();
+            });
+        }
 
-        document.getElementById('sales-btn').addEventListener('click', () => {
-            this.showAlert('Sales contact form will be available soon!', 'info');
-        });
-
-        document.getElementById('nav-new-post').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.showCreatePostModal();
-        });
-
-        document.getElementById('nav-logout').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.logout();
-        });
+        const navLogout = document.getElementById('nav-logout');
+        if (navLogout) {
+            navLogout.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.logout();
+            });
+        }
 
         // Search and filters
-        document.getElementById('search-btn').addEventListener('click', () => {
-            this.searchPosts();
-        });
-
-        document.getElementById('search-input').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
+        const searchBtn = document.getElementById('search-btn');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', () => {
                 this.searchPosts();
-            }
-        });
+            });
+        }
+
+        const searchInput = document.getElementById('search-input');
+        if (searchInput) {
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    this.searchPosts();
+                }
+            });
+        }
 
         // Sort buttons
         document.querySelectorAll('[data-sort]').forEach(btn => {
@@ -97,43 +117,64 @@ class BlogApp {
         });
 
         // Create post button
-        document.getElementById('create-post-btn').addEventListener('click', () => {
-            this.showCreatePostModal();
-        });
+        const createPostBtn = document.getElementById('create-post-btn');
+        if (createPostBtn) {
+            createPostBtn.addEventListener('click', () => {
+                this.showCreatePostModal();
+            });
+        }
 
         // Edit profile button
-        document.getElementById('edit-profile-btn').addEventListener('click', () => {
-            this.showEditProfileForm();
-        });
+        const editProfileBtn = document.getElementById('edit-profile-btn');
+        if (editProfileBtn) {
+            editProfileBtn.addEventListener('click', () => {
+                this.showEditProfileForm();
+            });
+        }
 
         // Profile form
-        document.getElementById('profile-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.updateProfile();
-        });
+        const profileForm = document.getElementById('profile-form');
+        if (profileForm) {
+            profileForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.updateProfile();
+            });
+        }
 
         // Post form
-        document.getElementById('post-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.savePost();
-        });
+        const postForm = document.getElementById('post-form');
+        if (postForm) {
+            postForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.savePost();
+            });
+        }
 
         // Comment form
-        document.getElementById('comment-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.addComment();
-        });
+        const commentForm = document.getElementById('comment-form');
+        if (commentForm) {
+            commentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.addComment();
+            });
+        }
 
         // Contact form
-        document.getElementById('contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.handleContactForm();
-        });
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleContactForm();
+            });
+        }
 
         // Back to top button
-        document.getElementById('back-to-top').addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        const backToTopBtn = document.getElementById('back-to-top');
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
     }
 
     async checkAuthStatus() {
@@ -189,13 +230,22 @@ class BlogApp {
     }
 
     showPage(page) {
+        console.log('showPage called with:', page);
+        
         // Hide all pages
         document.querySelectorAll('[id$="-page"]').forEach(pageElement => {
             pageElement.classList.add('d-none');
         });
 
         // Show selected page
-        document.getElementById(`${page}-page`).classList.remove('d-none');
+        const targetPage = document.getElementById(`${page}-page`);
+        if (targetPage) {
+            targetPage.classList.remove('d-none');
+            console.log(`Showing page: ${page}-page`);
+        } else {
+            console.error(`Page element not found: ${page}-page`);
+        }
+        
         this.currentPage = page;
 
         // Load page-specific content
@@ -600,7 +650,38 @@ class BlogApp {
 
     loadContactPage() {
         console.log('Loading contact page...');
-        // Contact page is static, no additional loading needed
+        
+        // Remove existing event listeners to prevent duplicates
+        const faqBtn = document.getElementById('faq-btn');
+        const prBtn = document.getElementById('pr-btn');
+        const salesBtn = document.getElementById('sales-btn');
+        
+        if (faqBtn) {
+            // Remove existing listeners
+            faqBtn.replaceWith(faqBtn.cloneNode(true));
+            const newFaqBtn = document.getElementById('faq-btn');
+            newFaqBtn.addEventListener('click', () => {
+                this.showAlert('FAQ page is coming soon!', 'info');
+            });
+        }
+        
+        if (prBtn) {
+            // Remove existing listeners
+            prBtn.replaceWith(prBtn.cloneNode(true));
+            const newPrBtn = document.getElementById('pr-btn');
+            newPrBtn.addEventListener('click', () => {
+                this.showAlert('PR contact form will be available soon!', 'info');
+            });
+        }
+        
+        if (salesBtn) {
+            // Remove existing listeners
+            salesBtn.replaceWith(salesBtn.cloneNode(true));
+            const newSalesBtn = document.getElementById('sales-btn');
+            newSalesBtn.addEventListener('click', () => {
+                this.showAlert('Sales contact form will be available soon!', 'info');
+            });
+        }
     }
 
     handleContactForm() {

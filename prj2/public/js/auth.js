@@ -178,7 +178,17 @@ function showEditProfileForm() {
     profileForm.classList.remove('d-none');
 }
 
-// Add these functions to the app object
-app.loadProfile = loadProfile;
-app.updateProfile = updateProfile;
-app.showEditProfileForm = showEditProfileForm;
+// Add these functions to the app object when it's available
+function addFunctionsToApp() {
+    if (typeof window.app !== 'undefined') {
+        window.app.loadProfile = loadProfile;
+        window.app.updateProfile = updateProfile;
+        window.app.showEditProfileForm = showEditProfileForm;
+    } else {
+        // Retry after a short delay
+        setTimeout(addFunctionsToApp, 100);
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', addFunctionsToApp);

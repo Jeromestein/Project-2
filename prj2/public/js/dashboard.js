@@ -142,5 +142,15 @@ function renderUserPosts(posts) {
     `;
 }
 
-// Add dashboard functions to app object
-app.loadDashboard = loadDashboard;
+// Add dashboard functions to app object when it's available
+function addFunctionsToApp() {
+    if (typeof window.app !== 'undefined') {
+        window.app.loadDashboard = loadDashboard;
+    } else {
+        // Retry after a short delay
+        setTimeout(addFunctionsToApp, 100);
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', addFunctionsToApp);

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Contact Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .page {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .page.active {
+            display: block;
+        }
+        .nav-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+        .nav-button.active {
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Contact Page Test</h1>
+    
+    <!-- Navigation -->
+    <div style="margin-bottom: 20px;">
+        <button class="nav-button active" onclick="showPage('home')">Home</button>
+        <button class="nav-button" onclick="showPage('contact')">Contact</button>
+    </div>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <h2>Home Page</h2>
+        <p>This is the home page. Click "Contact" to go to the contact page.</p>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page">
+        <h2>Contact Page</h2>
+        <p>This is the contact page. It should be visible when you click the Contact button.</p>
+        
+        <div style="margin: 20px 0;">
+            <h3>Contact Form</h3>
+            <form id="contact-form">
+                <div style="margin: 10px 0;">
+                    <label>Name: <input type="text" id="contact-name" required></label>
+                </div>
+                <div style="margin: 10px 0;">
+                    <label>Email: <input type="email" id="contact-email" required></label>
+                </div>
+                <div style="margin: 10px 0;">
+                    <label>Message: <textarea id="contact-message" rows="4" required></textarea></label>
+                </div>
+                <button type="submit" style="background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageName + '-page').classList.add('active');
+            
+            // Update navigation buttons
+            document.querySelectorAll('.nav-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            console.log('Showing page:', pageName);
+        }
+
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted! (This is a test)');
+            this.reset();
+        });
+
+        console.log('Simple test page loaded successfully');
+    </script>
+</body>
+</html>

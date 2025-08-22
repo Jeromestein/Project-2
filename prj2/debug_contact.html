@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Contact Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .debug-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background-color: #0056b3;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <h1>Debug Contact Page</h1>
+    
+    <div class="debug-section">
+        <h2>Test Contact Navigation</h2>
+        <button class="test-button" onclick="testContactNav()">Test Contact Navigation</button>
+        <button class="test-button" onclick="checkElements()">Check Elements</button>
+        <button class="test-button" onclick="testShowPage()">Test showPage Function</button>
+        <div id="debug-output"></div>
+    </div>
+
+    <div class="debug-section">
+        <h2>Manual Test</h2>
+        <p>Click the button below to manually trigger the contact page navigation:</p>
+        <button class="test-button" onclick="manualContactTest()">Manual Contact Test</button>
+    </div>
+
+    <div class="debug-section">
+        <h2>Console Logs</h2>
+        <p>Open your browser's developer console (F12) to see detailed logs.</p>
+        <div id="console-output"></div>
+    </div>
+
+    <script>
+        // Override console.log to capture logs
+        const originalLog = console.log;
+        const originalError = console.error;
+        const consoleOutput = document.getElementById('console-output');
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            consoleOutput.innerHTML += '<div class="status info">LOG: ' + args.join(' ') + '</div>';
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            consoleOutput.innerHTML += '<div class="status error">ERROR: ' + args.join(' ') + '</div>';
+        };
+
+        function testContactNav() {
+            console.log('Testing contact navigation...');
+            
+            const navContact = document.getElementById('nav-contact');
+            if (navContact) {
+                console.log('✅ nav-contact element found');
+                console.log('Element:', navContact);
+                
+                // Simulate click
+                navContact.click();
+            } else {
+                console.error('❌ nav-contact element not found');
+            }
+        }
+
+        function checkElements() {
+            console.log('Checking for required elements...');
+            
+            const elements = [
+                'nav-contact',
+                'contact-page',
+                'faq-btn',
+                'pr-btn',
+                'sales-btn',
+                'contact-form'
+            ];
+            
+            elements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    console.log(`✅ ${id} found`);
+                } else {
+                    console.error(`❌ ${id} not found`);
+                }
+            });
+        }
+
+        function testShowPage() {
+            console.log('Testing showPage function...');
+            
+            if (typeof window.app !== 'undefined') {
+                console.log('✅ app object found');
+                window.app.showPage('contact');
+            } else {
+                console.error('❌ app object not found');
+            }
+        }
+
+        function manualContactTest() {
+            console.log('Manual contact test...');
+            
+            // Hide all pages
+            document.querySelectorAll('[id$="-page"]').forEach(pageElement => {
+                pageElement.classList.add('d-none');
+                console.log('Hiding:', pageElement.id);
+            });
+
+            // Show contact page
+            const contactPage = document.getElementById('contact-page');
+            if (contactPage) {
+                contactPage.classList.remove('d-none');
+                console.log('✅ Showing contact page');
+                document.getElementById('debug-output').innerHTML = '<div class="status success">Contact page should now be visible!</div>';
+            } else {
+                console.error('❌ contact-page element not found');
+                document.getElementById('debug-output').innerHTML = '<div class="status error">Contact page element not found!</div>';
+            }
+        }
+
+        // Check if app is loaded
+        window.addEventListener('load', function() {
+            console.log('Page loaded, checking app initialization...');
+            
+            setTimeout(() => {
+                if (typeof window.app !== 'undefined') {
+                    console.log('✅ App initialized successfully');
+                } else {
+                    console.error('❌ App not initialized');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

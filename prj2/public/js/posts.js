@@ -389,11 +389,21 @@ async function deletePost(postId) {
     }
 }
 
-// Add these functions to the app object
-app.showPostDetail = showPostDetail;
-app.toggleLike = toggleLike;
-app.addComment = addComment;
-app.showCreatePostModal = showCreatePostModal;
-app.showEditPostModal = showEditPostModal;
-app.savePost = savePost;
-app.deletePost = deletePost;
+// Add these functions to the app object when it's available
+function addFunctionsToApp() {
+    if (typeof window.app !== 'undefined') {
+        window.app.showPostDetail = showPostDetail;
+        window.app.toggleLike = toggleLike;
+        window.app.addComment = addComment;
+        window.app.showCreatePostModal = showCreatePostModal;
+        window.app.showEditPostModal = showEditPostModal;
+        window.app.savePost = savePost;
+        window.app.deletePost = deletePost;
+    } else {
+        // Retry after a short delay
+        setTimeout(addFunctionsToApp, 100);
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', addFunctionsToApp);
